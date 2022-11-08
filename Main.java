@@ -1,3 +1,4 @@
+package bmi;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Scanner;
@@ -9,6 +10,9 @@ public class Bmi {
     double height;
     double weight;
     BigDecimal bd;
+    double height2;
+    double weight2;
+    BigDecimal bd2;
 
     try {
       Scanner scan = new Scanner(System.in);
@@ -16,16 +20,21 @@ public class Bmi {
       height = getInput(scan, "height(M)");
       weight = getInput(scan, "weight");
 
+      height2 = getInput(scan, "height(M)");
+      weight2 = getInput(scan, "weight");
+
       scan.close();
 
       double result = weight / (height*height);
-      //計算結果を小数点第1位までに丸める
+      double result2 = weight2 / (height2*height2);
       bd = new BigDecimal(result);
+      bd2 = new BigDecimal(result2);
       bd = bd.setScale(2, RoundingMode.HALF_UP);
+      bd2 = bd2.setScale(2, RoundingMode.HALF_UP);
 
-      //結果を表示する
       StringBuilder sb = new StringBuilder();
       sb.append("BMI=" + bd );
+      sb.append("BMI2="+bd2);
       System.out.println(sb.toString());
 
     } catch (NumberFormatException e) {
